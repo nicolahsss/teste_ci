@@ -10,10 +10,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [8.1]
+        php: [8.2]
         experimental: [false]
         include:
-          - php: 8.1
+          - php: 8.2
             analysis: true
 
     steps:
@@ -26,8 +26,16 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
 
-      - name: Install dependencies with Composer
-        uses: ramsey/composer-install@v1
+      # - name: Install dependencies with Composer
+      #   uses: ramsey/composer-install@v1
+      - uses: "actions/checkout@v3"
+      - uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php }}"
+      - uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "lowest"
+          composer-options: "--ignore-platform-reqs --optimize-autoloader"
 
       - name: Coding teste
         run: vendor/bin/phpunit
