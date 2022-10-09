@@ -12,6 +12,7 @@ WORKDIR /var/www/html
 
 COPY . .
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-interaction --no-progress --no-suggest --no-dev --optimize-autoloader --ansi --ignore-platform-reqs
 
 EXPOSE 80
