@@ -56,4 +56,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: nicolahsss/teste_ci:latest
+          tags: nicolahsss/teste_ci2:latest
