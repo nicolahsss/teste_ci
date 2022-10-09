@@ -10,6 +10,6 @@ class HwTest extends TestCase
     public function testText()
     {
         $hw = new Hw();
-        $this->assertEquals('Hello World!!!', $hw->text());
+        $this->assertEquals('Olá Mundo!!!', $hw->text());
     }
 }
